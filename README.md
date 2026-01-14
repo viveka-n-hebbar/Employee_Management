@@ -10,7 +10,7 @@ This project was developed as part of a Python Backend Developer technical assig
 
 ## Live Demo
 Base URL:
-https://employee-management-f4y3.onrender.com
+https://employee-management-f4y3.onrender.com/api/
 
 ---
 
