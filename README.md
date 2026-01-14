@@ -75,28 +75,30 @@ Add the following header to every request:
 Authorization: Bearer <access_token>
 
 ---
-
 ## Local Setup Instructions
 
-1. Clone the repository
+### 1. Clone the repository
 git clone <YOUR_GITHUB_REPOSITORY_URL>
 cd employee-api
 
-2. Create a virtual environment
+### 2. Create a virtual environment
 python -m venv venv
 
-Activate the environment:
-Windows: venv\Scripts\activate  
-Linux/macOS: source venv/bin/activate
+### 3. Activate the virtual environment
+Windows:
+venv\Scripts\activate
 
-3. Install dependencies
+Linux/macOS:
+source venv/bin/activate
+
+### 4. Install dependencies
 pip install -r requirements.txt
 
-4. Run migrations
+### 5. Run migrations
 python manage.py makemigrations
 python manage.py migrate
 
-5. Run the development server
+### 6. Run the development server
 python manage.py runserver
 
 The server will start at:
