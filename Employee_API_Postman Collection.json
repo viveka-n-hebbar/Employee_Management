@@ -1,0 +1,278 @@
+{
+	"info": {
+		"_postman_id": "0d7a375a-eeb2-42c7-9e9e-1218b9a0044d",
+		"name": "Habot Employee Management API (Deployed + JWT + CRUD)",
+		"description": "JWT Authentication + Employee CRUD APIs for Habot Interview (Deployed)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49544672",
+		"_collection_link": "https://vivekanew6-4541260.postman.co/workspace/Viveka-New's-Workspace~4b374650-90f9-44a8-881f-4abb09fe6c8d/collection/49544672-0d7a375a-eeb2-42c7-9e9e-1218b9a0044d?action=share&source=collection_link&creator=49544672"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Generate JWT Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin123\"\n}"
+						},
+						"url": {
+							"raw": "https://employee-management-f4y3.onrender.com/api/token/",
+							"protocol": "https",
+							"host": [
+								"employee-management-f4y3",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh JWT Token (Optional)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"refresh\": \"PASTE_REFRESH_TOKEN_HERE\"\n}"
+						},
+						"url": {
+							"raw": "https://employee-management-f4y3.onrender.com/api/token/refresh/",
+							"protocol": "https",
+							"host": [
+								"employee-management-f4y3",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"token",
+								"refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employees",
+			"item": [
+				{
+					"name": "Create Employee",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"viveka123\",\n  \"email\": \"viveka123@example.com\",\n  \"department\": \"Engineering\",\n  \"role\": \"HR\"\n}"
+						},
+						"url": {
+							"raw": "https://employee-management-f4y3.onrender.com/api/employees/",
+							"protocol": "https",
+							"host": [
+								"employee-management-f4y3",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"employees",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Employees (Pagination)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "https://employee-management-f4y3.onrender.com/api/employees/?page=1",
+							"protocol": "https",
+							"host": [
+								"employee-management-f4y3",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"employees",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Employees (Department)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "https://employee-management-f4y3.onrender.com/api/employees/?department=HR",
+							"protocol": "https",
+							"host": [
+								"employee-management-f4y3",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"employees",
+								""
+							],
+							"query": [
+								{
+									"key": "department",
+									"value": "HR"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Employee",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "https://employee-management-f4y3.onrender.com/api/employees/1/",
+							"protocol": "https",
+							"host": [
+								"employee-management-f4y3",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"employees",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Employee",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Updated\",\n  \"email\": \"john.doe@example.com\",\n  \"department\": \"HR\",\n  \"role\": \"Manager\"\n}"
+						},
+						"url": {
+							"raw": "https://employee-management-f4y3.onrender.com/api/employees/1/",
+							"protocol": "https",
+							"host": [
+								"employee-management-f4y3",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"employees",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Employee",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "https://employee-management-f4y3.onrender.com/api/employees/3/",
+							"protocol": "https",
+							"host": [
+								"employee-management-f4y3",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"employees",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
